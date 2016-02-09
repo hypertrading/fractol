@@ -13,8 +13,8 @@
 
 NAME = fractol
 
-SRC = src/main.c src/draw.c
-OBJ = src/main.o src/draw.o
+SRC = src/main.c src/draw.c src/data.c src/key.c src/mandelbrot.c
+OBJ = src/main.o src/draw.o src/data.o src/key.o src/mandelbrot.o
 
 all: $(NAME)
 

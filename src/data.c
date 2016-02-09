@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vklepper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 19:16:22 by vklepper          #+#    #+#             */
-/*   Updated: 2016/02/04 19:16:24 by vklepper         ###   ########.fr       */
+/*   Created: 2016/02/09 12:49:13 by vklepper          #+#    #+#             */
+/*   Updated: 2016/02/09 12:49:15 by vklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	ft_error(int i)
+void	data_mandel(t_data *data)
 {
-	if (i == 1)
-		ft_putendl("Aie ! Il semble que les arguments rentrés sont erronés.");
-	if (i == 2)
-		ft_putendl("error in mandelbrot()");
-	if (i == -1)
-		ft_putendl("error mlx_init");
-	exit(1);
-}
-
-int		main(int argc, char **argv)
-{
-	char *mandel;
-
-	mandel = "mandelbrot";
-	if (argc != 2)
-		ft_error(1);
-	if (ft_strcmp(argv[1], mandel) == 0)
-	{
-		if (ft_mandelbrot() != 0)
-			ft_error(2);
-	}
-	return (0);
+	data->x = 0;
+	data->x1 = -2.1;
+	data->x2 = 0.6;
+	data->y1 = -1.2;
+	data->y2 = 1.2;
+	data->iter_max = 50;
+	data->img_x = (data->x2 - data->x1) * data->zoom;
+	data->img_y = (data->y2 - data->y1) * data->zoom;
 }

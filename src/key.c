@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ffrimpon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vklepper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 18:15:31 by ffrimpon          #+#    #+#             */
-/*   Updated: 2015/11/29 22:16:35 by ffrimpon         ###   ########.fr       */
+/*   Created: 2016/02/09 13:27:45 by vklepper          #+#    #+#             */
+/*   Updated: 2016/02/09 13:27:48 by vklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../fractol.h"
 
-char	*ft_strrchr(const char *str, int c)
+int			my_key_funct(int k, t_data *data)
 {
-	char			*dest;
-	unsigned int	i;
-	int				j;
-
-	i = 0;
-	j = -1;
-	dest = (char *)str;
-	while (i <= (ft_strlen(str)))
+	if (k == 69)
 	{
-		if (dest[i] == (char)c)
-			j = i;
-		i++;
+		data->zoom += 10;
+		mlx_clear_window(data->mlx, data->win);
+		mlx_destroy_image(data->mlx, data->img.adr);
+		img_init(data);
+		mandel_process(data);
 	}
-	if (j >= 0)
-		return (&dest[j]);
+	if (k == 53)
+		exit(0);
 	return (0);
 }

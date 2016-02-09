@@ -37,6 +37,8 @@ typedef struct		s_data
 	void			*win;
 	int				map_x;
 	int				map_y;
+	int 			x;
+	int				y;
 	float			x1;
 	float			x2;
 	float			y1;
@@ -50,9 +52,18 @@ typedef struct		s_data
 	float 			z_r;
 	float 			z_i;
 	float 			i;
+	float 			tmp;
 	t_img			img;
 }					t_data;
+void	init_mlx(t_data *data);
+void	img_pixel_put(t_data *data, int x, int y, int color);
+void	img_init(t_data *data);
+int 	ft_mandelbrot(void);
+void	mandel_process(t_data *data);
+void	data_mandel(t_data *data);
+void	ft_error(int i);
+int		my_key_funct(int k, t_data *data);
 
-void	img_pixel_put(t_data *data, int x, int y);
+
 
 #endif

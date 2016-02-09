@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vklepper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/09 12:49:13 by vklepper          #+#    #+#             */
-/*   Updated: 2016/02/09 12:49:15 by vklepper         ###   ########.fr       */
+/*   Created: 2016/02/09 17:11:52 by vklepper          #+#    #+#             */
+/*   Updated: 2016/02/09 17:11:54 by vklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	data_mandel(t_data *data)
+int	*color(int i, int iter_max)
 {
-	data->x = 0;
-	data->x1 = -2.1;
-	data->x2 = 0.6;
-	data->y1 = -1.2;
-	data->y2 = 1.2;
-	data->iter_max = 50;
-	data->img_x = (data->x2 - data->x1) * data->zoom;
-	data->img_y = (data->y2 - data->y1) * data->zoom;
-	data->white[0] = 255;
-	data->white[1] = 255;
-	data->white[2] = 255;
+	static int	rgb[3];
+
+	rgb[0] = i * 100 / iter_max + 155;
+	rgb[1] = i * 220 / iter_max + 20;
+	rgb[2] = i * 160 / iter_max + 10;
+	return (rgb);
 }

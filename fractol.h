@@ -33,6 +33,8 @@ typedef struct		s_img
 
 typedef struct		s_data
 {
+	int 			mouse_x;
+	int 			mouse_y;
 	void			*mlx;
 	void			*win;
 	int				map_x;
@@ -53,17 +55,21 @@ typedef struct		s_data
 	float 			z_i;
 	float 			i;
 	float 			tmp;
+	int 			*white;
+
 	t_img			img;
 }					t_data;
+
 void	init_mlx(t_data *data);
-void	img_pixel_put(t_data *data, int x, int y, int color);
+void	img_pixel_put(t_data *data, int x, int y, int *color);
 void	img_init(t_data *data);
 int 	ft_mandelbrot(void);
 void	mandel_process(t_data *data);
 void	data_mandel(t_data *data);
 void	ft_error(int i);
 int		my_key_funct(int k, t_data *data);
-
+int		*color(int i, int inter_max);
+int 	my_mouse_funct(int click, int x, int y, t_data *data);
 
 
 #endif

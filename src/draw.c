@@ -33,15 +33,15 @@ void	img_init(t_data *data)
 		ft_error(-1);
 }
 
-void	img_pixel_put(t_data *data, int x, int y, int color)
+void	img_pixel_put(t_data *data, int x, int y, int *color)
 {
 	int	pos;
 
 	if (x < data->map_x && y < data->map_y && x >= 0 && y >= 0)
 	{
 		pos = (x * data->img.bpp / 8) + (y * data->img.sl);
-		data->img.img[pos] = color;
-		data->img.img[pos + 1] = color;
-		data->img.img[pos + 2] = color;
+		data->img.img[pos] = color[0];
+		data->img.img[pos + 1] = color[1];
+		data->img.img[pos + 2] = color[2];
 	}
 }

@@ -52,8 +52,8 @@ int				ft_mandelbrot(void)
 {
 	t_data data;
 
-	data.map_x = 500;
-	data.map_y = 500;
+	data.map_x = 530;
+	data.map_y = 480;
 	data.zoom = 200;
 	data_mandel(&data);
 	init_mlx(&data);

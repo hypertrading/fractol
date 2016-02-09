@@ -22,25 +22,31 @@ int 		my_mouse_funct(int click, int x, int y, t_data *data)
 	mlx_destroy_image(data->mlx, data->img.adr);
 	img_init(data);
 	data->x = 0;
-	
+	data->zoom += 20;
+	data->iter_max = 100;
 	if (x < 250 && y < 250)
 	{
-		data->zoom += 50;
-		data->x2 -= 0.1; 
-		data->iter_max = 50;
+		data->x1 -= 0.1; 
+		data->y1 -= 0.1;
+
 	}
 	if (x > 250 && y < 250)
 	{
-		data->zoom += 50;
-		data->x1 += 0.1;
-		data->y2 -= 0.1;
-		data->iter_max = 50;
+		data->x1 += 0.1; 
+		data->y1 -= 0.1;
+
 	}
 	if (x < 250 && y > 250)
 	{
-		data->zoom += 50;
 		data->y1 += 0.1;
-		data->iter_max = 50;
+		data->x1 -= 0.1;
+
+	}
+	if (x > 250 && y > 250)
+	{
+		data->y1 += 0.1;
+		data->x1 += 0.1;
+
 	}
 	/*data->x2 = x + h;
 	data->y1 = y - h;

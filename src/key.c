@@ -12,66 +12,74 @@
 
 #include "../fractol.h"
 
+static void		zoom(int x, int y, t_data *data)
+{
+		data->zoom += 20;
+		if (x < 250 && y < 250)
+		{
+			data->x1 -= 0.05; 
+			data->y1 -= 0.05;
+		}
+		if (x > 250 && y < 250)
+		{
+			data->x1 += 0.05; 
+			data->y1 -= 0.05;
+		}
+		if (x < 250 && y > 250)
+		{
+			data->y1 += 0.05;
+			data->x1 -= 0.05;
+		}
+		if (x > 250 && y > 250)
+		{
+			data->y1 += 0.05;
+			data->x1 += 0.05;
+		}
+}
+
+static void		dezoom(int x, int y, t_data *data)
+{
+		data->zoom -= 20;
+		if (x < 250 && y < 250)
+		{
+			data->x1 += 0.1; 
+			data->y1 += 0.1;
+
+		}
+		if (x > 250 && y < 250)
+		{
+			data->x1 -= 0.1; 
+			data->y1 += 0.1;
+
+		}
+		if (x < 250 && y > 250)
+		{
+			data->y1 -= 0.1;
+			data->x1 += 0.1;
+
+		}
+		if (x > 250 && y > 250)
+		{
+			data->y1 -= 0.1;
+			data->x1 -= 0.1;
+		}
+}
+
 int 		my_mouse_funct(int click, int x, int y, t_data *data)
 {
-	int h;
-	int i;
-	h = 0;
-	i = click;
-	mlx_clear_window(data->mlx, data->win);
-	mlx_destroy_image(data->mlx, data->img.adr);
-	img_init(data);
-	data->x = 0;
-	data->zoom += 20;
-	data->iter_max = 100;
-	if (x < 250 && y < 250)
-	{
-		data->x1 -= 0.1; 
-		data->y1 -= 0.1;
-
-	}
-	if (x > 250 && y < 250)
-	{
-		data->x1 += 0.1; 
-		data->y1 -= 0.1;
-
-	}
-	if (x < 250 && y > 250)
-	{
-		data->y1 += 0.1;
-		data->x1 -= 0.1;
-
-	}
-	if (x > 250 && y > 250)
-	{
-		data->y1 += 0.1;
-		data->x1 += 0.1;
-
-	}
-	/*data->x2 = x + h;
-	data->y1 = y - h;
-	data->y2 = y + h;*/
-	
-	mandel_process(data);
+	if (click == 4)
+		zoom(x, y ,data);
+	if (click == 5)
+		dezoom(x, y, data);
+	data->mouse_x = x;
+	data->mouse_y = y;
 	return (0);
 }
 
 int			my_key_funct(int k, t_data *data)
 {
-	if (k == 69)
-	{
-		mlx_clear_window(data->mlx, data->win);
-		mlx_destroy_image(data->mlx, data->img.adr);
-		img_init(data);
-		data->x = 0;
-		data->zoom += 20;
-		data->x1 += 0;
-		data->x2 -= 0;
-		data->y1 += 0;
-		data->y2 -= 0.1;
-		data->iter_max += 20;
-		mandel_process(data);
-	}
+	data->iter_max = k == 69 ? data->iter_max + 20 : data->iter_max + 0;
+	data->iter_max = k == 78 ? data->iter_max - 20 : data->iter_max - 0;
 	if (k == 53)
 		exit(0);
 	return (0);

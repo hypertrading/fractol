@@ -25,15 +25,13 @@ void	ft_error(int i)
 
 int		main(int argc, char **argv)
 {
-	char *mandel;
-
-	mandel = "mandelbrot";
 	if (argc != 2)
 		ft_error(1);
-	if (ft_strcmp(argv[1], mandel) == 0)
-	{
-		if (ft_mandelbrot() != 0)
-			ft_error(2);
-	}
+	else if (ft_strcmp(argv[1], "mandelbrot") == 0)
+		mandelbrot();
+	else if (ft_strcmp(argv[1], "julia") == 0)
+		julia();
+	else if (ft_strcmp(argv[1], "burningship") == 0)
+		burningship();
 	return (0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vklepper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ffrimpon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/09 13:30:03 by vklepper          #+#    #+#             */
-/*   Updated: 2016/02/09 13:30:04 by vklepper         ###   ########.fr       */
+/*   Created: 2016/02/22 12:19:55 by ffrimpon          #+#    #+#             */
+/*   Updated: 2016/02/22 12:19:56 by ffrimpon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-static	void	mandel_calcul(t_data *data)
+static	void	burning_calcul(t_data *data)
 {
 	data->c_r = data->x / data->zoom + data->x1;
 	data->c_i = data->y / data->zoom + data->y1;
@@ -21,7 +21,7 @@ static	void	mandel_calcul(t_data *data)
 	data->i = 0;
 }
 
-void			mandel_process(t_data *data)
+void			burning_process(t_data *data)
 {
 	data->x = 0;
 	while (data->x < data->img_x)
@@ -29,12 +29,12 @@ void			mandel_process(t_data *data)
 		data->y = 0;
 		while (data->y < data->img_y)
 		{
-			mandel_calcul(data);
+			burning_calcul(data);
 			while ((data->z_r * data->z_r + data->z_i * data->z_i) < 4 && data->i < data->iter_max)
 			{
 				data->tmp = data->z_r;
 				data->z_r = data->z_r * data->z_r - data->z_i * data->z_i + data->c_r;
-				data->z_i = 2 * data->z_i * data->tmp + data->c_i;
+				data->z_i = 2 * fabs(data->z_i * data->tmp) + data->c_i;
 				data->i++;
 			}
 			if (data->i == data->iter_max)
@@ -47,9 +47,9 @@ void			mandel_process(t_data *data)
 	}
 }
 
-void				mandelbrot(void)
+void				burningship(void)
 {
 	t_data data;
 
-	data_mandel(&data);
+	data_burning(&data);
 }

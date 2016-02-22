@@ -6,15 +6,15 @@
 #    By: vklepper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/04 19:16:04 by vklepper          #+#    #+#              #
-#    Updated: 2016/02/04 19:16:09 by vklepper         ###   ########.fr        #
+#    Updated: 2016/02/22 13:33:41 by ffrimpon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = fractol
 
-SRC = src/main.c src/draw.c src/data.c src/key.c src/mandelbrot.c src/color.c
-OBJ = src/main.o src/draw.o src/data.o src/key.o src/mandelbrot.o src/color.o
+SRC = src/main.c src/draw.c src/data.c src/key.c src/mandelbrot.c src/color.c src/julia.c src/expose.c src/burningship.c
+OBJ = src/main.o src/draw.o src/data.o src/key.o src/mandelbrot.o src/color.o src/julia.o src/expose.o src/burningship.o
 
 all: $(NAME)
 

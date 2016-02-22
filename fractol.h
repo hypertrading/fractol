@@ -56,6 +56,7 @@ typedef struct		s_data
 	float 			i;
 	float 			tmp;
 	int 			*white;
+	int				fractal;
 
 	t_img			img;
 }					t_data;
@@ -63,13 +64,22 @@ typedef struct		s_data
 void	init_mlx(t_data *data);
 void	img_pixel_put(t_data *data, int x, int y, int *color);
 void	img_init(t_data *data);
-int 	ft_mandelbrot(void);
+void	mandelbrot(void);
+void	julia(void);
+void	burningship(void);
 void	mandel_process(t_data *data);
+void	julia_process(t_data *data);
+void 	burning_process(t_data *data);
 void	data_mandel(t_data *data);
+void	data_julia(t_data *data);
+void	data_burning(t_data *data);
 void	ft_error(int i);
+void	draw(t_data *data);
 int		my_key_funct(int k, t_data *data);
 int		*color(int i, int inter_max);
 int 	my_mouse_funct(int click, int x, int y, t_data *data);
+int 	expose_hook(t_data *data);
+int 	move(t_data *data);
 
 
 #endif

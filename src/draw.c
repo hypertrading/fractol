@@ -14,8 +14,6 @@
 
 void	init_mlx(t_data *data)
 {
-	data->map_x = 500;
-	data->map_y = 500;
 	if (!(data->mlx = mlx_init()))
 		ft_error(-1);
 	if (!(data->win = mlx_new_window(data->mlx, data->map_x, data->map_y, "I am a fractol")))
@@ -47,7 +45,8 @@ void	img_pixel_put(t_data *data, int x, int y, int *color)
 void	draw(t_data *data)
 {
 	mlx_hook(data->win, 2, (1L << 0), my_key_funct, data);
-	mlx_mouse_hook(data->win, my_mouse_funct, data);
+	mlx_hook(data->win, 6, 1, my_mouse_funct, data);
+	mlx_mouse_hook(data->win, mouse_zoom, data);
 	mlx_expose_hook(data->win, expose_hook, data);
 	mlx_loop_hook(data->mlx, move, data);
 	mlx_loop(data->mlx);

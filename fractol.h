@@ -33,14 +33,14 @@ typedef struct		s_img
 
 typedef struct		s_data
 {
-	int 			mouse_x;
-	int 			mouse_y;
+	float		mouse_x;
+	float 			mouse_y;
 	void			*mlx;
 	void			*win;
 	int				map_x;
 	int				map_y;
-	int 			x;
-	int				y;
+	float			x;
+	float			y;
 	float			x1;
 	float			x2;
 	float			y1;
@@ -57,9 +57,10 @@ typedef struct		s_data
 	float 			tmp;
 	int 			*white;
 	int				fractal;
-
+	int 			lock;
 	t_img			img;
 }					t_data;
+
 
 void	init_mlx(t_data *data);
 void	img_pixel_put(t_data *data, int x, int y, int *color);
@@ -75,9 +76,11 @@ void	data_julia(t_data *data);
 void	data_burning(t_data *data);
 void	ft_error(int i);
 void	draw(t_data *data);
+void	global_data(t_data *data);
+int		mouse_zoom(int click, int x, int y, t_data *data);
 int		my_key_funct(int k, t_data *data);
 int		*color(int i, int inter_max);
-int 	my_mouse_funct(int click, int x, int y, t_data *data);
+int 	my_mouse_funct(int x, int y, t_data *data);
 int 	expose_hook(t_data *data);
 int 	move(t_data *data);
 

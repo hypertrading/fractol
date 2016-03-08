@@ -12,6 +12,7 @@
 
 #include "../fractol.h"
 
+
 static	void	julia_calcul(t_data *data)
 {
 	data->c_r = (data->mouse_x - data->mouse_y) / 100;
@@ -34,7 +35,7 @@ void			julia_process(t_data *data)
 			{
 				data->tmp = data->z_r;
 				data->z_r = data->z_r * data->z_r - data->z_i * data->z_i + data->c_r;
-				data->z_i = 2 * fabs(data->z_i * data->tmp) + data->c_i;
+				data->z_i = 2 * (data->z_i * data->tmp) + data->c_i;
 				data->i++;
 			}
 			if (data->i == data->iter_max)
@@ -51,5 +52,10 @@ void				julia(void)
 {
 	t_data data;
 
+	data.mouse_x = 0;
+	data.mouse_y = 0;
 	data_julia(&data);
+	global_data(&data);
+	init_mlx(&data);
+	draw(&data);
 }

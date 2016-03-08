@@ -30,24 +30,27 @@ void			mandel_process(t_data *data)
 		while (data->y < data->img_y)
 		{
 			mandel_calcul(data);
-			while ((data->z_r * data->z_r + data->z_i * data->z_i) < 4 && data->i < data->iter_max)
+			while ((data->z_r * data->z_r + data->z_i * data->z_i)
+			< 4 && data->i < data->iter_max)
 			{
 				data->tmp = data->z_r;
-				data->z_r = data->z_r * data->z_r - data->z_i * data->z_i + data->c_r;
+				data->z_r = data->z_r * data->z_r - data->z_i *
+					data->z_i + data->c_r;
 				data->z_i = 2 * data->z_i * data->tmp + data->c_i;
 				data->i++;
 			}
 			if (data->i == data->iter_max)
 				img_pixel_put(data, data->x, data->y, data->white);
 			else
-				img_pixel_put(data, data->x, data->y, color(data->i, data->iter_max));
+				img_pixel_put(data, data->x, data->y,
+					color(data->i, data->iter_max));
 			data->y++;
 		}
 		data->x++;
 	}
 }
 
-void				mandelbrot(void)
+void			mandelbrot(void)
 {
 	t_data data;
 

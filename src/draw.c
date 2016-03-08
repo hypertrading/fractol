@@ -16,7 +16,8 @@ void	init_mlx(t_data *data)
 {
 	if (!(data->mlx = mlx_init()))
 		ft_error(-1);
-	if (!(data->win = mlx_new_window(data->mlx, data->map_x, data->map_y, "I am a fractol")))
+	if (!(data->win = mlx_new_window(data->mlx,
+			data->map_x, data->map_y, "I am a fractol")))
 		ft_error(-1);
 }
 
@@ -27,6 +28,21 @@ void	img_init(t_data *data)
 	if (!(data->img.img = mlx_get_data_addr(data->img.adr,
 			&data->img.bpp, &data->img.sl, &data->img.endian)))
 		ft_error(-1);
+}
+
+void	draw_line(t_data *data, int x, int y, int x1, int y1)
+{
+	int dl;
+	int dh;
+	int c;
+	int m;
+
+	dh = x1 - x;
+	dl = y1 - y;
+	c = -1;
+	m = abs(dh) > abs(dl) ? abs(dh) : abs(dl);
+	while (++c < m)
+		img_pixel_put(data, x + c * dh / m, y + c * dl / m, data->white);
 }
 
 void	img_pixel_put(t_data *data, int x, int y, int *color)

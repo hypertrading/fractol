@@ -33,5 +33,7 @@ int		main(int argc, char **argv)
 		julia();
 	else if (ft_strcmp(argv[1], "burningship") == 0)
 		burningship();
+	else if (ft_strcmp(argv[1], "tree") == 0)
+		tree();
 	return (0);
 }

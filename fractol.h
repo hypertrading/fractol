@@ -55,6 +55,8 @@ typedef struct		s_data
 	float 			z_i;
 	float 			i;
 	float 			tmp;
+	int 			angle;
+	int				depth;
 	int 			*white;
 	int				fractal;
 	int 			lock;
@@ -63,17 +65,21 @@ typedef struct		s_data
 
 
 void	init_mlx(t_data *data);
+void	draw_line(t_data *data, int x, int y, int x1, int y1);
 void	img_pixel_put(t_data *data, int x, int y, int *color);
 void	img_init(t_data *data);
 void	mandelbrot(void);
 void	julia(void);
 void	burningship(void);
+void	tree(void);
 void	mandel_process(t_data *data);
 void	julia_process(t_data *data);
 void 	burning_process(t_data *data);
+void	tree_process(t_data *data);
 void	data_mandel(t_data *data);
 void	data_julia(t_data *data);
 void	data_burning(t_data *data);
+void	data_tree(t_data *data);
 void	ft_error(int i);
 void	draw(t_data *data);
 void	global_data(t_data *data);

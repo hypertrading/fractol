@@ -12,7 +12,7 @@
 
 #include "../fractol.h"
 
-void		global_data(t_data *data)
+void	global_data(t_data *data)
 {
 	if (!(data->white = (int *)malloc(sizeof(int) * 4)))
 		ft_error(-1);
@@ -28,6 +28,7 @@ void		global_data(t_data *data)
 	data->white[1] = 255;
 	data->white[2] = 255;
 }
+
 void	data_mandel(t_data *data)
 {
 	data->fractal = 1;
@@ -41,7 +42,7 @@ void	data_mandel(t_data *data)
 }
 
 void	data_julia(t_data *data)
-{	
+{
 	data->fractal = 2;
 	data->x1 = -1;
 	data->x2 = 1;
@@ -60,4 +61,13 @@ void	data_burning(t_data *data)
 	global_data(data);
 	init_mlx(data);
 	draw(data);
+}
+
+void	data_tree(t_data *data)
+{
+	data->fractal = 4;
+	data->x = 250;
+	data->y = 500;
+	data->angle = 12;
+	data->depth = 8;
 }

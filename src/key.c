@@ -87,8 +87,17 @@ int			my_mouse_funct(int x, int y, t_data *data)
 
 int			my_key_funct(int k, t_data *data)
 {
-	data->iter_max = k == 69 ? data->iter_max + 20 : data->iter_max + 0;
-	data->iter_max = k == 78 ? data->iter_max - 20 : data->iter_max - 0;
+	if (k == 69)
+	{
+		if (data->depth <= 15)
+			data->depth += 1;
+		data->iter_max += 20;
+	}
+	if (k == 78)
+	{
+		data->depth -= 1;
+		data->iter_max -= 20;
+	}
 	if (k == 49 && data->lock == 0)
 		data->lock = 1;
 	else

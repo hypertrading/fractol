@@ -30,15 +30,15 @@ void	img_init(t_data *data)
 		ft_error(-1);
 }
 
-void	draw_line(t_data *data, int x, int y, int x1, int y1)
+void	draw_line(t_data *data, int x, int y)
 {
 	int dl;
 	int dh;
 	int c;
 	int m;
 
-	dh = x1 - x;
-	dl = y1 - y;
+	dh = data->x1 - x;
+	dl = data->y1 - y;
 	c = -1;
 	m = abs(dh) > abs(dl) ? abs(dh) : abs(dl);
 	while (++c < m)

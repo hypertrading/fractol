@@ -12,27 +12,38 @@
 
 #include "../fractol.h"
 
-static void			draw_tree(t_data *data, int x, int y,  int angle, int depth)
+static void	draw_tree(t_data *data, int x, int y, int angle)
 {
 	int x1;
 	int y1;
+	int depth_local;
 
-	if (depth >= 0)
+	depth_local = data->depth;
+	if (data->depth >= 0)
 	{
-		x1 = x + cos(angle * (M_PI / 180)) * depth * 10;
-		y1 = y + cos(angle * (M_PI / 180)) * depth * 10;
-		draw_line(data, x, y, x1, y1);
-		draw_tree(data, x1, y1, angle + 20, depth - 1);
-		draw_tree(data, x1, y1, angle - 20, depth - 1);
+		x1 = x + cos(angle * (3.14159 / 180)) * data->depth * 5;
+		y1 = y + sin(angle * (3.14159 / 180)) * data->depth * 5;
+		data->white[2] = 153 - (data->depth_max - data->depth) * 10;
+		data->white[1] = 102 + (data->depth_max - data->depth) * 2;
+		data->white[0] = 51;
+		data->x1 = x1;
+		data->y1 = y1;
+		draw_line(data, x, y);
+		data->depth -= 1;
+		draw_tree(data, x1, y1, angle + 20);
+		data->depth = depth_local - 1;
+		draw_tree(data, x1, y1, angle - 20);
 	}
 }
 
-void	tree_process(t_data *data)
+void		tree_process(t_data *data)
 {
-	draw_tree(data, (int)data->x, (int)data->y, data->angle, data->depth);
+	data->depth_max = data->depth;
+	draw_tree(data, (int)data->x2, (int)data->y2, data->angle);
+	data->depth = data->depth_max;
 }
 
-void			tree(void)
+void		tree(void)
 {
 	t_data data;
 

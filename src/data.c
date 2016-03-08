@@ -66,8 +66,8 @@ void	data_burning(t_data *data)
 void	data_tree(t_data *data)
 {
 	data->fractal = 4;
-	data->x = 250;
-	data->y = 500;
-	data->angle = 12;
-	data->depth = 8;
+	data->x2 = 250;
+	data->y2 = 500;
+	data->angle = -90;
+	data->depth = 9;
 }

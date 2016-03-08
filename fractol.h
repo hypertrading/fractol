@@ -57,6 +57,7 @@ typedef struct		s_data
 	float 			tmp;
 	int 			angle;
 	int				depth;
+	int 			depth_max;
 	int 			*white;
 	int				fractal;
 	int 			lock;
@@ -65,7 +66,7 @@ typedef struct		s_data
 
 
 void	init_mlx(t_data *data);
-void	draw_line(t_data *data, int x, int y, int x1, int y1);
+void	draw_line(t_data *data, int x, int y);
 void	img_pixel_put(t_data *data, int x, int y, int *color);
 void	img_init(t_data *data);
 void	mandelbrot(void);

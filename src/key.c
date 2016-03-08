@@ -89,10 +89,24 @@ int			my_key_funct(int k, t_data *data)
 {
 	data->iter_max = k == 69 ? data->iter_max + 20 : data->iter_max + 0;
 	data->iter_max = k == 78 ? data->iter_max - 20 : data->iter_max - 0;
+	data->x1 = k == 124 ? data->x1 + 0.2 : data->x1 + 0;
+	data->x1 = k == 123 ? data->x1 - 0.2 : data->x1 - 0;
 	if (k == 49 && data->lock == 0)
 		data->lock = 1;
-	else
+	else if (k == 49 && data->lock == 1)
 		data->lock = 0;
+	data->color = k == 67 && data->color < 4? data->color + 1 : data->color + 0;
+	data->color = k == 67 && data->color == 4? data->color - 4 : data->color - 0;
+	if (k == 126)
+	{
+		data->y1 -= 0.2;
+		data->y2 += 0.2;
+	}
+	if (k == 125)
+	{
+		data->y1 += 0.2;
+		data->y2 -= 0.2;
+	}
 	if (k == 53)
 		exit(0);
 	return (0);

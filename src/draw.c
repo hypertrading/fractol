@@ -60,7 +60,7 @@ void	img_pixel_put(t_data *data, int x, int y, int *color)
 
 void	draw(t_data *data)
 {
-	mlx_hook(data->win, 2, (1L << 0), my_key_funct, data);
+	mlx_hook(data->win, 2, 1, my_key_funct, data);
 	mlx_hook(data->win, 6, 1, my_mouse_funct, data);
 	mlx_mouse_hook(data->win, mouse_zoom, data);
 	mlx_expose_hook(data->win, expose_hook, data);

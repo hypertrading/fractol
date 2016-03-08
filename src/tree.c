@@ -12,7 +12,7 @@
 
 #include "../fractol.h"
 
-static void			draw_tree(t_data *data, int x, int y,  int angle, int depth)
+/*static void			draw_tree(t_data *data, int x, int y,  int angle, int depth)
 {
 	int x1;
 	int y1;
@@ -40,4 +40,4 @@ void			tree(void)
 	global_data(&data);
 	init_mlx(&data);
 	draw(&data);
-}
+}*/

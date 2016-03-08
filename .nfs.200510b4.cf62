@@ -33,7 +33,7 @@ typedef struct		s_img
 
 typedef struct		s_data
 {
-	float			mouse_x;
+	float		mouse_x;
 	float 			mouse_y;
 	void			*mlx;
 	void			*win;
@@ -55,9 +55,6 @@ typedef struct		s_data
 	float 			z_i;
 	float 			i;
 	float 			tmp;
-	int 			color;
-	int 			angle;
-	int				depth;
 	int 			*white;
 	int				fractal;
 	int 			lock;
@@ -66,30 +63,23 @@ typedef struct		s_data
 
 
 void	init_mlx(t_data *data);
-void	draw_line(t_data *data, int x, int y, int x1, int y1);
 void	img_pixel_put(t_data *data, int x, int y, int *color);
 void	img_init(t_data *data);
-void	mandelbrot(t_data *data);
-void	julia(t_data *data);
-void	galaxy(t_data *data);
-void	burningship(t_data *data);
-void	tree(t_data *data);
+void	mandelbrot(void);
+void	julia(void);
+void	burningship(void);
 void	mandel_process(t_data *data);
 void	julia_process(t_data *data);
-void	galaxy_process(t_data *data);
 void 	burning_process(t_data *data);
-void	tree_process(t_data *data);
 void	data_mandel(t_data *data);
 void	data_julia(t_data *data);
-void	data_galaxy(t_data *data);
 void	data_burning(t_data *data);
-void	data_tree(t_data *data);
 void	ft_error(int i);
 void	draw(t_data *data);
 void	global_data(t_data *data);
 int		mouse_zoom(int click, int x, int y, t_data *data);
 int		my_key_funct(int k, t_data *data);
-int		*color(int i, int inter_max, t_data *data);
+int		*color(int i, int inter_max);
 int 	my_mouse_funct(int x, int y, t_data *data);
 int 	expose_hook(t_data *data);
 int 	move(t_data *data);

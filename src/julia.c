@@ -43,21 +43,24 @@ void			julia_process(t_data *data)
 				img_pixel_put(data, data->x, data->y, data->white);
 			else
 				img_pixel_put(data, data->x, data->y,
-					color(data->i, data->iter_max));
+					color(data->i, data->iter_max, data));
 			data->y++;
 		}
 		data->x++;
 	}
 }
 
-void			julia(void)
+void			julia(t_data *data)
 {
-	t_data data;
-
-	data.mouse_x = 0;
-	data.mouse_y = 0;
-	data_julia(&data);
-	global_data(&data);
-	init_mlx(&data);
-	draw(&data);
+	data->mouse_x = 0;
+	data->mouse_y = 0;
+	data->fractal = 2;
+	data->x1 = -1.2;
+	data->x2 = 1.5;
+	data->y1 = -1.2;
+	data->y2 = 1.5;
+	data->c_r = 0.285;
+	global_data(data);
+	init_mlx(data);
+	draw(data);
 }

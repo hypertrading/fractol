@@ -43,16 +43,21 @@ void			mandel_process(t_data *data)
 				img_pixel_put(data, data->x, data->y, data->white);
 			else
 				img_pixel_put(data, data->x, data->y,
-					color(data->i, data->iter_max));
+					color(data->i, data->iter_max, data));
 			data->y++;
 		}
 		data->x++;
 	}
 }
 
-void			mandelbrot(void)
+void			mandelbrot(t_data *data)
 {
-	t_data data;
-
-	data_mandel(&data);
+	data->fractal = 1;
+	data->x1 = -2.1;
+	data->x2 = 2.1;
+	data->y1 = -1.2;
+	data->y2 = 1.3;
+	global_data(data);
+	init_mlx(data);
+	draw(data);
 }

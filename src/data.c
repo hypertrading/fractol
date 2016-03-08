@@ -29,13 +29,13 @@ void	global_data(t_data *data)
 	data->white[2] = 255;
 }
 
-void	data_mandel(t_data *data)
+/*void	data_mandel(t_data *data)
 {
 	data->fractal = 1;
 	data->x1 = -2.1;
 	data->x2 = 2.1;
 	data->y1 = -1.2;
-	data->y2 = 1.2;
+	data->y2 = 1.3;
 	global_data(data);
 	init_mlx(data);
 	draw(data);
@@ -44,10 +44,10 @@ void	data_mandel(t_data *data)
 void	data_julia(t_data *data)
 {
 	data->fractal = 2;
-	data->x1 = -1;
-	data->x2 = 1;
+	data->x1 = -1.2;
+	data->x2 = 1.5;
 	data->y1 = -1.2;
-	data->y2 = 1.2;
+	data->y2 = 1.5;
 	data->c_r = 0.285;
 }
 
@@ -71,3 +71,13 @@ void	data_tree(t_data *data)
 	data->angle = 12;
 	data->depth = 8;
 }
+
+void	data_galaxy(t_data *data)
+{
+	data->fractal = 5;
+	data->x1 = -1.2;
+	data->x2 = 1.5;
+	data->y1 = -1.2;
+	data->y2 = 1.5;
+	data->c_r = 0.285;
+}*/

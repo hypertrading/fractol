@@ -23,6 +23,8 @@ int		expose_hook(t_data *data)
 		burning_process(data);
 	if (data->fractal == 4)
 		tree_process(data);
+	if (data->fractal == 5)
+		galaxy_process(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.adr, 0, 0);
 	return (0);
 }

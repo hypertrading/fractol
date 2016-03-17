@@ -6,10 +6,9 @@
 /*   By: vklepper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:15:51 by vklepper          #+#    #+#             */
-/*   Updated: 2016/02/04 19:15:55 by vklepper         ###   ########.fr       */
+/*   Updated: 2016/03/17 12:05:11 by vklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
@@ -20,7 +19,6 @@
 # include <math.h>
 # include <unistd.h>
 # include <fcntl.h>
-
 
 typedef struct		s_img
 {
@@ -34,7 +32,7 @@ typedef struct		s_img
 typedef struct		s_data
 {
 	float			mouse_x;
-	float 			mouse_y;
+	float			mouse_y;
 	void			*mlx;
 	void			*win;
 	int				map_x;
@@ -46,53 +44,52 @@ typedef struct		s_data
 	float			y1;
 	float			y2;
 	float			zoom;
-	float 			iter_max;
+	float			iter_max;
 	float			img_x;
 	float			img_y;
 	float			c_r;
 	float			c_i;
-	float 			z_r;
-	float 			z_i;
-	float 			i;
-	float 			tmp;
-	int 			c;
-	int 			angle;
+	float			z_r;
+	float			z_i;
+	float			i;
+	float			tmp;
+	int				c;
+	int				angle;
 	int				dep;
-	int 			depth_max;
-	int 			*white;
+	int				depth_max;
+	int				*white;
 	int				fractal;
-	int 			lock;
+	int				lock;
 	t_img			img;
 }					t_data;
 
-
-void	init_mlx(t_data *data);
-void	draw_line(t_data *data, int x, int y);
-void	img_pixel_put(t_data *data, int x, int y, int *color);
-void	img_init(t_data *data);
-void	mandelbrot(t_data *data);
-void	julia(t_data *data);
-void	galaxy(t_data *data);
-void	burningship(t_data *data);
-void	tree(t_data *data);
-void	mandel_process(t_data *data);
-void	julia_process(t_data *data);
-void	galaxy_process(t_data *data);
-void 	burning_process(t_data *data);
-void	tree_process(t_data *data);
-void	data_mandel(t_data *data);
-void	data_julia(t_data *data);
-void	data_galaxy(t_data *data);
-void	data_burning(t_data *data);
-void	data_tree(t_data *data);
-void	ft_error(int i);
-void	draw(t_data *data);
-void	global_data(t_data *data);
-int		mouse_zoom(int click, int x, int y, t_data *data);
-int		my_key_funct(int k, t_data *data);
-int		*color(int i, int inter_max, t_data *data);
-int 	my_mouse_funct(int x, int y, t_data *data);
-int 	expose_hook(t_data *data);
-int 	move(t_data *data);
+void				init_mlx(t_data *data);
+void				draw_line(t_data *data, int x, int y);
+void				img_pixel_put(t_data *data, int x, int y, int *color);
+void				img_init(t_data *data);
+void				mandelbrot(t_data *data);
+void				julia(t_data *data);
+void				galaxy(t_data *data);
+void				burningship(t_data *data);
+void				tree(t_data *data);
+void				mandel_process(t_data *data);
+void				julia_process(t_data *data);
+void				galaxy_process(t_data *data);
+void				burning_process(t_data *data);
+void				tree_process(t_data *data);
+void				data_mandel(t_data *data);
+void				data_julia(t_data *data);
+void				data_galaxy(t_data *data);
+void				data_burning(t_data *data);
+void				data_tree(t_data *data);
+void				ft_error(int i);
+void				draw(t_data *data);
+void				global_data(t_data *data);
+int					mouse_zoom(int click, int x, int y, t_data *data);
+int					my_key_funct(int k, t_data *data);
+int					*color(int i, int inter_max, t_data *data);
+int					my_mouse_funct(int x, int y, t_data *data);
+int					expose_hook(t_data *data);
+int					move(t_data *data);
 
 #endif
